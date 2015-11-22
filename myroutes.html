@@ -2,11 +2,12 @@
 <html>
 <head>
     	<meta charset='utf-8' />
-    	<title>Open Access Map</title>
+    	<title>My Routes</title>
 	<link rel="stylesheet" type="text/css" href="openaccessmap.css">
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
 
@@ -25,6 +26,9 @@
     	<div id='buttons'>
     	<a href="http://www.ericajewell.com/openaccessmap/index.html"><button class ="btn"> Public Routes</button></a>
     	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="btn"> My Routes</button></a>
+    	</div>
+    	<div id='addbutton'>
+    	<button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
     	</div>
     	<br>
     	<br>
@@ -45,7 +49,7 @@ var map = new mapboxgl.Map({
     center: [-0.0374, 51.4739],
     zoom: 15
 });
-/*
+
 map.on('style.load', function () {
     map.addSource("route", {
         "type": "geojson",
@@ -54,6 +58,7 @@ map.on('style.load', function () {
             "properties": {},
             "geometry": {
                 "type": "LineString",
+// need to read coordinates from gpx file
                 "coordinates": [
                     [-0.040104, 51.474939],
                     [-0.038956, 51.475246],
@@ -77,6 +82,11 @@ map.on('style.load', function () {
         }
     });
 });
-*/
+
+
+function saveRoute(){
+// write gpx file to public maps
+
+}
 </script>
 </html>
