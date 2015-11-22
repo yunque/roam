@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    	<meta charset='utf-8' />
+    	<title>My Routes</title>
+	<link rel="stylesheet" type="text/css" href="openaccessmap.css">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+
+<body>
+	<div id="topbar">
+	<br>
+	<center>
+	<h1>OPEN<b>ACCESS</b>MAP</h1>
+	</center>
+	</div>
+    	<center>
+    	<p>A collaborative mapping system for wheelchair users</p>
+    	</center>
+    	<div id='twomaps'>
+    	<br>
+    	<div id='buttons'>
+    	<a href="http://www.ericajewell.com/openaccessmap/index.html"><button class ="btn"> Public Routes</button></a>
+    	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="btn"> My Routes</button></a>
+    	</div>
+    	<div id='addbutton'>
+    	<button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
+    	</div>  
+    	<br>
+    	<br>
+    	<br>
+	<div id='mapdiv'></div> 	
+	<br>
+	<br>
+	<center>
+	</div>
+	
+	</center>
+</body>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamV3ZWxsZSIsImEiOiJjaWg5ZXpuYTAwMDRsdjBranp1ZzN2YzNuIn0.C3fADSX9QbPApjiJyRyJLQ';
+var map = new mapboxgl.Map({
+    container: 'mapdiv',
+    style: 'mapbox://styles/mapbox/streets-v8',
+    center: [-0.0374, 51.4739],
+    zoom: 15
+});
+
+map.on('style.load', function () {
+    map.addSource("route", {
+        "type": "geojson",
+        "data": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [-0.040104, 51.474939],
+                    [-0.038956, 51.475246],
+                    [-0.038012, 51.473803]
+                ]
+            }
+        }
+    });
+
+    map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": "route",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#888",
+            "line-width": 8
+        }
+    });
+});
+</script>
+</html>

@@ -6,6 +6,7 @@
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <script>
       function init() {
+        // MAPDIV LAYER
         map = new OpenLayers.Map("mapdiv");
         var mapnik = new OpenLayers.Layer.OSM();
         map.addLayer(mapnik);
@@ -20,6 +21,11 @@
         var markers = new OpenLayers.Layer.Markers( "Markers" );
         map.addLayer(markers);
         markers.addMarker(new OpenLayers.Marker(lonlat));
+
+        // HACKCESS LAYER
+        map = new OpenLayers.Map("hackcess");
+        var hackcessible = new OpenLayers.Layer.OSM();
+        map.addLayer(hackcessible);
 
         map.setCenter(lonlat, zoom);
       }
