@@ -19,16 +19,16 @@
 	</center>
 	</div>
     	<center>
-    	<p>A collaborative mapping system for wheelchair users</p>
+    	<p>A collaborative mapping platform for wheelchair users</p>
     	</center>
     	<div id='twomaps'>
     	<br>
     	<div id='buttons'>
     	<a href="http://www.ericajewell.com/openaccessmap/index.html"><button class ="btn"> Public Routes</button></a>
-    	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="btn"> My Routes</button></a>
+    	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="readybtn"> My Routes</button></a>
     	</div>
     	<div id='addbutton'>
-    	<button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
+    	<a href="http://www.ericajewell.com/openaccessmap/addtopublic.html"><button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
     	</div>
     	<br>
     	<br>
@@ -39,9 +39,34 @@
 	<center>
 	</div>
 
+//	<div id="gpx"></div>
+
+
 	</center>
 </body>
 <script>
+
+/*
+// create arrays to store gpx coordinates
+var lons[];
+var lats[];
+
+ $.ajax({
+               url: "http://www.ericajewell.com/openaccessmap/newcross2hackcess.gpx",
+               success: function (xml) {
+                    	$(xml).find("trkpt").each(function () {
+                    	 var lon = $(this).attr("lon");
+                    	 lons.push(lon);
+                         var lat = $(this).attr("lat");
+                         lats.push(lat);
+                         //$("#gpx").append(lon, lat);
+                    });
+               }
+          });
+
+
+*/
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamV3ZWxsZSIsImEiOiJjaWg5ZXpuYTAwMDRsdjBranp1ZzN2YzNuIn0.C3fADSX9QbPApjiJyRyJLQ';
 var map = new mapboxgl.Map({
     container: 'mapdiv',
@@ -62,7 +87,7 @@ map.on('style.load', function () {
                 "coordinates": [
                     [-0.040104, 51.474939],
                     [-0.038956, 51.475246],
-                    [-0.038012, 51.473803]
+                    [-0.038012, 51.473803],
                 ]
             }
         }
@@ -77,16 +102,27 @@ map.on('style.load', function () {
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "#888",
+            "line-color": "#CD4F39",
             "line-width": 8
         }
     });
 });
 
+/*
+// reading through gpx array to create map
+                for (i = 0, i < lons.length; i++;){
+                	for (j = 0; j < lats.length; j++;){
+			[lons[i], lats[j]];
+                	}
+                }
 
-function saveRoute(){
 // write gpx file to public maps
-
+function saveRoute(){
 }
+
+// load coordinates on page for testing
+$("#gpx").load("http://www.ericajewell.com/openaccessmap/newcross2hackcess.gpx");
+*/
+
 </script>
 </html>
