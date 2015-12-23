@@ -1,48 +1,81 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Mapccess</title>
-
-    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
-    <script>
-      function init() {
-        // MAPDIV LAYER
-        map = new OpenLayers.Map("mapdiv");
-        var mapnik = new OpenLayers.Layer.OSM();
-        map.addLayer(mapnik);
-
-        var lonlat = new OpenLayers.LonLat(-0.0365, 51.475).transform(
-            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator
-          );
-
-        var zoom = 13;
-
-        var markers = new OpenLayers.Layer.Markers( "Markers" );
-        map.addLayer(markers);
-        markers.addMarker(new OpenLayers.Marker(lonlat));
-
-        // HACKCESS LAYER
-        map = new OpenLayers.Map("hackcess");
-        var hackcessible = new OpenLayers.Layer.OSM();
-        map.addLayer(hackcessible);
-
-        map.setCenter(lonlat, zoom);
-      }
-    </script>
-
-    <style>
-    #mapdiv { width:800px; height:500px; }
-    div.olControlAttribution { bottom:3px; }
-    </style>
-
+    <meta charset='utf-8' />
+    <title>Open Access Map</title>
+    <link rel="stylesheet" type="text/css" href="openaccessmap.css">
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
 </head>
 
-<body onload="init();">
-<br>
-<center>
-<h1>MAPCCESS</h1>
-    <p>An interactive mapping system for wheelchair users</p>
-    <div id="mapdiv"></div>
+<body>
+	<div id="topbar">
+	<br>
+	<center>
+	<h1>OPEN<b>ACCESS</b>MAP</h1>
+	</center>
+	</div>
+    	<center>
+    	<p>A collaborative mapping platform for wheelchair users</p>
+    	</center>
+    	<div id='twomaps'>
+    	<br>
+    	<div id='buttons'>
+    	<a href="http://www.ericajewell.com/openaccessmap/index.html"><button class ="readybtn"> Public Routes</button></a>
+    	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="btn"> My Routes</button></a>
+    	</div>
+    	<br>
+    	<br>
+    	<br>
+	<div id='mapdiv'></div>
+	<br>
+	<br>
+	<center>
+	</div>
+
+	</center>
 </body>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamV3ZWxsZSIsImEiOiJjaWg5ZXpuYTAwMDRsdjBranp1ZzN2YzNuIn0.C3fADSX9QbPApjiJyRyJLQ';
+var map = new mapboxgl.Map({
+    container: 'mapdiv',
+    style: 'mapbox://styles/mapbox/streets-v8',
+    center: [-0.0374, 51.4739],
+    zoom: 15
+});
+/*
+map.on('style.load', function () {
+    map.addSource("route", {
+        "type": "geojson",
+        "data": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [-0.040104, 51.474939],
+                    [-0.038956, 51.475246],
+                    [-0.038012, 51.473803]
+                ]
+            }
+        }
+    });
+
+    map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": "route",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#888",
+            "line-width": 8
+        }
+    });
+});
+*/
+</script>
 </html>
