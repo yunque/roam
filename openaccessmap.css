@@ -1,0 +1,92 @@
+#mapdiv {
+	margin: auto;
+	height:400px;
+	width: 80%;
+}
+#twomaps {
+	margin: auto;
+	height:500px;
+	width: 85%;
+	background-color: white;
+	position: relative;
+}
+#buttons{
+	position:absolute;
+	left:95px;
+}
+#addbutton{
+	position:absolute;
+	right:95px;
+}
+#gpx{
+	width: 85%;
+}
+div.olControlAttribution {
+	bottom:3px;
+}
+#topbar{
+	height: 100px;
+	width: 100%;
+	background-color: #E0FFFF;
+}
+h1{
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+   	"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   	font-weight: 300;
+}
+p{
+   	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+   	"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   	font-weight: 300;
+
+}
+
+.readybtn {
+  background: #BBFFFF;
+  color: #0000;
+  display: inline-block;
+  border-radius: 5px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 2.5em;
+  padding: 0 3em;
+  text-decoration: none;
+}
+
+.btn {
+  background: #E0FFFF;
+  color: #0000;
+  display: inline-block;
+  border-radius: 5px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 2.5em;
+  padding: 0 3em;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background:  #BBFFFF;
+}
+.addbtn {
+  background: #FF6347;
+  color: #0000;
+  display: inline-block;
+  border-radius: 5px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 2.5em;
+  padding: 0 3em;
+  text-decoration: none;
+}
+
+.addbtn:hover {
+  background:  #CD4F39;
+}
+body{
+	margin: 0;
+	padding: 0;
+}
