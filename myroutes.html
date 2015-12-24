@@ -15,7 +15,7 @@
 	<div id="topbar">
 	<br>
 	<center>
-	<h1>OPEN<b>ACCESS</b>MAP</h1>
+	<h1>OPEN<b>ACCESS</b>MAPS</h1>
 	</center>
 	</div>
     	<center>
@@ -28,26 +28,22 @@
     	<a href="http://www.ericajewell.com/openaccessmap/myroutes.html"><button class="readybtn"> My Routes</button></a>
     	</div>
     	<div id='addbutton'>
-    	<a href="http://www.ericajewell.com/openaccessmap/addtopublic.html"><button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
-    	</div>
+    	<button class="addbtn" onclick="saveRoute()"> Add to Public Routes</button>
+    	</div>  
     	<br>
     	<br>
     	<br>
-	<div id='mapdiv'></div>
+	<div id='mapdiv'></div> 	
 	<br>
 	<br>
 	<center>
-	</div>
-
-//	<div id="gpx"></div>
-
-
+	</div>	
 	</center>
 </body>
 <script>
 
 /*
-// create arrays to store gpx coordinates
+// TODO/WIP: create arrays to store gpx coordinates
 var lons[];
 var lats[];
 
@@ -75,14 +71,19 @@ var map = new mapboxgl.Map({
     zoom: 15
 });
 
+
+
 map.on('style.load', function () {
-    map.addSource("route", {
+
+    // ROUTE A: NEW CROSS to HACKCESS
+    // 1/2. Define the route
+    map.addSource("routeA", {
         "type": "geojson",
         "data": {
             "type": "Feature",
             "properties": {},
             "geometry": {
-                "type": "LineString",
+                "type": "LineString",             
                 "coordinates": [
                     [-0.040104, 51.474939],
                     [-0.038956, 51.475246],
@@ -91,11 +92,12 @@ map.on('style.load', function () {
             }
         }
     });
-
+    
+    // 2/2. Draw the layer
     map.addLayer({
-        "id": "route",
+        "id": "routeA",
         "type": "line",
-        "source": "route",
+        "source": "routeA",
         "layout": {
             "line-join": "round",
             "line-cap": "round"
@@ -105,17 +107,52 @@ map.on('style.load', function () {
             "line-width": 8
         }
     });
+    
+    
+    
+    // ROUTE B: GOLDSMITHS TO SAINSBURYS
+	// 1/2. Define the route
+    map.addSource("routeB", {
+        "type": "geojson",
+        "data": {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [-0.037676, 51.473096],
+                    [-0.034994, 51.474529]			
+                ]
+            }
+        }
+    });
+	// 2/2. Draw the layer
+    map.addLayer({
+        "id": "routeB",
+        "type": "line",
+        "source": "routeB",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#CD4F39",
+            "line-width": 8
+        }
+    });
+
+    
 });
 
 /*
 // reading through gpx array to create map
-                for (i = 0, i < lons.length; i++;){
+                for (i = 0; i < lons.length; i++;){
                 	for (j = 0; j < lats.length; j++;){
 			[lons[i], lats[j]];
                 	}
                 }
 
-// write gpx file to public maps
+// write gpx file to public maps          
 function saveRoute(){
 }
 
